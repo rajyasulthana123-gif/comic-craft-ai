@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+{{ story.title }} · ComicCraft
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero compact">
+
+    <p class="eyebrow">
+        Comic Preview
+    </p>
+
+    <h1>
+        {{ story.title }}
+    </h1>
+
+    <p>
+        Review all five panels before
+        saving your comic.
+    </p>
+
+</section>
+
+
+<div class="actions">
+
+
+    <a
+        class="button"
+        href="{{ pdf_path }}"
+        download
+    >
+        Download Your Comic as PDF
+    </a>
+
+
+    <a
+        class="button secondary"
+        href="/"
+    >
+        Create Another Comic
+    </a>
+
+
+</div>
+
+
+<div class="comic-list">
+
+
+{% for panel in layout %}
+
+
+<article class="panel card">
+
+
+    <div class="panel-number">
+
+        PANEL {{ panel.panel_number }}
+
+    </div>
+
+
+    <h2>
+
+        {{ panel.title }}
+
+    </h2>
+
+
+    <img
+        src="{{ panel.image_path }}"
+        alt="Illustration for {{ panel.title }}"
+    >
+
+
+    <p class="scene">
+
+        <em>
+            {{ panel.scene_description }}
+        </em>
+
+    </p>
+
+
+    <div class="text-block">
+
+        <strong>
+            Caption
+        </strong>
+
+        <p>
+            {{ panel.caption }}
+        </p>
+
+    </div>
+
+
+    <div class="text-block">
+
+        <strong>
+            Narration
+        </strong>
+
+        <p>
+            {{ panel.narration }}
+        </p>
+
+    </div>
+
+
+    {% if panel.dialogue %}
+
+    <div class="dialogue">
+
+        <strong>
+            Dialogue
+        </strong>
+
+        <p>
+            {{ panel.dialogue }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <details>
+
+        <summary>
+            Image prompt reference
+        </summary>
+
+        <p>
+            {{ panel.image_prompt }}
+        </p>
+
+    </details>
+
+
+</article>
+
+
+{% endfor %}
+
+
+</div>
+
+{% endblock %}

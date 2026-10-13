@@ -1,0 +1,199 @@
+ {% extends "base.html" %}
+
+{% block title %}
+Create Comic · ComicCraft
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">
+        Gemini + Stable Diffusion
+    </p>
+
+    <h1>
+        Turn an idea into a comic.
+    </h1>
+
+    <p>
+        Describe your story, choose the hero
+        and visual style, then let ComicCraft
+        build five connected panels.
+    </p>
+
+</section>
+
+
+{% if error %}
+
+<div class="alert">
+
+    {{ error }}
+
+</div>
+
+{% endif %}
+
+
+<form
+    class="card form-card"
+    method="post"
+    action="/generate"
+>
+
+
+    <label>
+
+        Story Prompt
+
+        <textarea
+            name="story_prompt"
+            rows="5"
+            maxlength="1200"
+            required
+            placeholder="A brave fox exploring an enchanted forest..."
+        ></textarea>
+
+    </label>
+
+
+    <div class="grid-2">
+
+
+        <label>
+
+            Main Character Name
+
+            <input
+                name="character_name"
+                required
+                placeholder="Luna"
+            >
+
+        </label>
+
+
+        <label>
+
+            Setting
+
+            <select name="setting">
+
+                <option>
+                    forest
+                </option>
+
+                <option>
+                    school
+                </option>
+
+                <option>
+                    city
+                </option>
+
+                <option>
+                    space
+                </option>
+
+                <option>
+                    village
+                </option>
+
+                <option>
+                    underwater world
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Story Tone
+
+            <select name="tone">
+
+                <option>
+                    light-hearted
+                </option>
+
+                <option>
+                    dramatic
+                </option>
+
+                <option>
+                    poetic
+                </option>
+
+                <option>
+                    funny
+                </option>
+
+                <option>
+                    adventurous
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Art Style
+
+            <select name="art_style">
+
+                <option>
+                    comic book
+                </option>
+
+                <option>
+                    anime
+                </option>
+
+                <option>
+                    pixel art
+                </option>
+
+                <option>
+                    watercolor
+                </option>
+
+                <option>
+                    realistic
+                </option>
+
+            </select>
+
+        </label>
+
+
+    </div>
+
+
+    <button
+        class="button"
+        type="submit"
+    >
+        Create My Comic
+    </button>
+
+
+</form>
+
+
+<div class="hint">
+
+    <strong>Tip:</strong>
+
+    More specific prompts usually produce
+    more consistent characters, locations,
+    and scenes.
+
+</div>
+
+{% endblock %}
